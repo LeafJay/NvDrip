@@ -1,4 +1,4 @@
-local ensure_installed = { 'tsserver', 'tailwindcss', 'lua_ls', 'jdtls','rust_analyzer','svelte' }
+local ensure_installed = { 'tsserver', 'tailwindcss', 'lua_ls', 'jdtls', 'rust_analyzer', 'svelte' }
 
 return {
   'neovim/nvim-lspconfig',
@@ -27,7 +27,29 @@ return {
         lsp_zero.default_setup,
         jdtls = lsp_zero.noop,
         tsserver = lsp_zero.noop,
-        rust_analyzer = lsp_zero.noop,
+        rust_analyzer = function()
+          local rust_tools = require('rust-tools')
+
+          rust_tools.setup({
+            server = {
+              on_attach = function(client, bufnr)
+                vim.keymap.set('n', '<leader>ca', rust_tools.hover_actions.hover_actions, { buffer = bufnr })
+              end
+            }
+          })
+        end,
+        svelte = function()
+          require('lspconfig').svelte.setup({
+            on_attach = function(client)
+              vim.api.nvim_create_autocmd("BufWritePost", {
+                pattern = { "*.js", "*.ts" },
+                callback = function(ctx)
+                  client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.file })
+                end,
+              })
+            end
+          })
+        end,
       },
     })
   end,

@@ -1,9 +1,3 @@
--- n, v, i, t = mode names
-local M = {}
-
-
--- n, v, i, t = mode names
-
 local M = {}
 
 M.general = {
@@ -97,18 +91,51 @@ M.telescope = {
     -- pick a hidden term
     ["<leader>pt"] = { "<cmd> Telescope terms <CR>", "Pick hidden term" },
 
-    -- theme switcher
-    ["<leader>th"] = { "<cmd> Telescope themes <CR>", "Nvchad themes" },
-
-    ["<leader>ma"] = { "<cmd> Telescope marks <CR>", "telescope bookmarks" },
+    ["<leader>ma"] = { "<cmd> Telescope marks <CR>", "Telescope bookmarks" },
   },
 }
 
 M.scope = {
   plugin = true,
-
   n = {
+    ["<tab>"] = {"<cmd> bn <CR>", "Next buffer"},
+    ["<S-tab>"] = {"<cmd> bp <CR>", "Previous buffer"},
+    ["<leader>x"] = {"<cmd> bd <CR>", "Close buffer"},
   },
 }
+
+M.codeium = {
+  plugin = true,
+}
+
+M.lsp = {
+  plugin = true,
+}
+
+M.fterm = {
+  plugin = true,
+  n = {
+    ["<M-i>"] = {
+      function ()
+        require("FTerm").toggle()
+      end,
+      "Toggle floating terminal"
+    }
+  },
+  t = {
+    ["<M-i>"] = {
+      function ()
+        require("FTerm").toggle()
+      end,
+      "Toggle floating terminal"
+    }
+  }
+
+}
+
+M.dap = {}
+M.dap_ui = {}
+M.dap_python = {}
+
 
 return M

@@ -44,12 +44,7 @@ M.general = {
     -- new buffer
     ["<leader>b"] = { "<cmd> enew <CR>", "New buffer" },
 
-    ["<leader>fm"] = {
-      function()
-        vim.lsp.buf.format { async = true }
-      end,
-      "LSP formatting",
-    },
+    ["<leader>fm"] = { "<cmd> LspZeroFormat <CR>", "LSP formatting"},
   },
 
   t = {
@@ -95,28 +90,20 @@ M.telescope = {
   },
 }
 
-M.scope = {
-  plugin = true,
-  n = {
-    ["<tab>"] = {"<cmd> bn <CR>", "Next buffer"},
-    ["<S-tab>"] = {"<cmd> bp <CR>", "Previous buffer"},
-    ["<leader>x"] = {"<cmd> bd <CR>", "Close buffer"},
-  },
-}
-
 M.codeium = {
   plugin = true,
 }
 
-M.lsp = {
+M.lspconfig = {
   plugin = true,
+
 }
 
 M.fterm = {
   plugin = true,
   n = {
     ["<M-i>"] = {
-      function ()
+      function()
         require("FTerm").toggle()
       end,
       "Toggle floating terminal"
@@ -124,7 +111,7 @@ M.fterm = {
   },
   t = {
     ["<M-i>"] = {
-      function ()
+      function()
         require("FTerm").toggle()
       end,
       "Toggle floating terminal"

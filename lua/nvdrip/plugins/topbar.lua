@@ -1,20 +1,13 @@
 local utils = require("nvdrip.core.utils")
 
 return {
-  dependencies = {
-    {
-      "tiagovla/scope.nvim",
-      init = function()
-        utils.load_mappings("scope")
-      end,
-      config = function()
-        require("scope").setup({})
-      end,
+  "akinsho/bufferline.nvim",
+  dependencies = { "nvim-tree/nvim-web-devicons" },
+  version = "*",
+  opts = {
+    options = {
+      mode = "tabs",
+      separator_style = "slant",
     },
   },
-
-  "romgrk/barbar.nvim",
-  config = function()
-    require("barbar").setup()
-  end
 }

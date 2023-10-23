@@ -6,17 +6,17 @@ return {
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'williamboman/mason.nvim' },
     { 'williamboman/mason-lspconfig.nvim' },
-    { 'VonHeikemen/lsp-zero.nvim', }
+    { 'VonHeikemen/lsp-zero.nvim', },
   },
-
+  
   config = function()
     local utils = require("nvdrip.core.utils")
     local lsp_zero = require('lsp-zero')
 
     lsp_zero.extend_lspconfig()
 
-    lsp_zero.on_attach(function(client, bufnr)
-      utils.load_mappings("lsp")
+    lsp_zero.on_attach(function()
+      utils.load_mappings("lspconfig")
     end)
 
     require('mason-lspconfig').setup({
@@ -25,17 +25,6 @@ return {
         lsp_zero.default_setup,
         jdtls = lsp_zero.noop,
         tsserver = lsp_zero.noop,
-        rust_analyzer = function()
-          local rust_tools = require('rust-tools')
-
-          rust_tools.setup({
-            server = {
-              on_attach = function(client, bufnr)
-                vim.keymap.set('n', '<leader>ca', rust_tools.hover_actions.hover_actions, { buffer = bufnr })
-              end
-            }
-          })
-        end,
         svelte = function()
           require('lspconfig').svelte.setup({
             on_attach = function(client)

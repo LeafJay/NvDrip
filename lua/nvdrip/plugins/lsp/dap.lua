@@ -1,24 +1,12 @@
-local ensure_installed = {
-  "java-test",
-  "java-debug-adapter",
-}
 
 return {
   {
     "mfussenegger/nvim-dap",
     dependencies = {
       { 'williamboman/mason.nvim' },
-      { 'jay-babu/mason-nvim-dap.nvim' },
     },
     config = function(_, opts)
       require("nvdrip.core.utils").load_mappings("dap")
-    end,
-  },
-  {
-    'jay-babu/mason-nvim-dap.nvim',
-    opts = { ensure_installed = ensure_installed, handlers = {} },
-    config = function(_, opts)
-      require('mason-nvim-dap').setup(opts)
     end,
   },
 

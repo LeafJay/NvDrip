@@ -1,5 +1,3 @@
-local ensure_installed = { 'tsserver', 'tailwindcss', 'lua_ls', 'jdtls', 'rust_analyzer', 'svelte' }
-
 return {
   'neovim/nvim-lspconfig',
   cmd = { 'LspInfo', 'LspInstall', 'LspStart' },

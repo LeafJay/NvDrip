@@ -4,6 +4,7 @@ return {
   "pmizio/typescript-tools.nvim",
   dependencies = {
   'VonHeikemen/lsp-zero.nvim',
+  },
   ft = {
     "javascript",
     "javascriptreact",
@@ -57,4 +58,4 @@ return {
     })
   end
   }
-}
+

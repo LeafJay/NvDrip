@@ -4,6 +4,7 @@ return {
   'nvim-telescope/telescope.nvim',
   dependencies = {
     "nvim-treesitter/nvim-treesitter",
+    { "tiagovla/scope.nvim"},
     "nvim-lua/plenary.nvim",
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     {'nvim-telescope/telescope-ui-select.nvim' }
@@ -14,7 +15,7 @@ return {
   end,
 
   opts = {
-    extensions_list = { "notify", "fzf", "ui-select" },
+    extensions_list = {"scope", "notify", "fzf", "ui-select" },
   },
 
 

@@ -1,20 +1,31 @@
 return {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    lazy = true,
-    priority = 1000,
+  "catppuccin/nvim",
+  name = "catppuccin",
+  lazy = true,
+  priority = 1000,
 
-    opts = {
-      flavour = "mocha",
-      floating_border = "on",
-      transparent_background = true,
+  opts = {
+    flavour = "mocha",
+    floating_border = "on",
+    integrations = {
+      cmp = true,
+      gitsigns = true,
+      nvimtree = true,
+      treesitter = true,
+      mason = true,
+      noice = true,
+      notify = true,
+      lsp_trouble = true,
+      which_key = true,
     },
-    
-    init = function()
-      vim.cmd.colorscheme("catppuccin")
-    end,
+    transparent_background = true,
+  },
 
-    config = function(_, opts)
-      require("catppuccin").setup(opts)
-    end,
+  init = function()
+    vim.cmd.colorscheme("catppuccin")
+  end,
+
+  config = function(_, opts)
+    require("catppuccin").setup(opts)
+  end,
 }

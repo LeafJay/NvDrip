@@ -90,13 +90,22 @@ M.telescope = {
   },
 }
 
+M.barbar = {
+  plugin = true,
+  n = {
+    ["<leader>q"] = {"<cmd> BufferClose <CR>", "Close buffer"},
+    ["<leader>Q"] = {"<cmd> BufferCloseAllButCurrent <CR>", "Close every buffer excepts current"},
+    ["<tab>"] = {"<cmd> BufferNext <CR>", "Next buffer"},
+    ["<S-tab>"] = {"<cmd> BufferPrevious <CR>", "Previous buffer"},
+  }
+}
+
 M.codeium = {
   plugin = true,
 }
 
 M.lspconfig = {
   plugin = true,
-
 }
 
 M.fterm = {

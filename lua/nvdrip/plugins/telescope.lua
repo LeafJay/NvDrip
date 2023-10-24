@@ -3,11 +3,12 @@ local utils = require("nvdrip.core.utils")
 return {
   'nvim-telescope/telescope.nvim',
   dependencies = {
+    "nosduco/remote-sshfs.nvim",
     "nvim-treesitter/nvim-treesitter",
-    { "tiagovla/scope.nvim"},
     "nvim-lua/plenary.nvim",
+     'nvim-telescope/telescope-ui-select.nvim',
+     "tiagovla/scope.nvim",
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-    {'nvim-telescope/telescope-ui-select.nvim' }
   },
 
   init = function()
@@ -15,7 +16,7 @@ return {
   end,
 
   opts = {
-    extensions_list = {"scope", "notify", "fzf", "ui-select" },
+    extensions_list = { "remote-sshfs", "scope", "notify", "fzf", "ui-select" },
   },
 
 

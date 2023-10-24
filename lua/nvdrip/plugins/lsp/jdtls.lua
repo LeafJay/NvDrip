@@ -55,10 +55,8 @@ return {
           .get_package('java-test')
           :get_install_path()
 
-      local java_test_bundle = vim.split(
-        vim.fn.glob(java_test_path .. '/extension/server/*.jar'),
-        '\n'
-      )
+      -- local java_test_bundle = vim.split(vim.fn.glob(java_test_path .. '/extension/server/*.jar'), "\n")
+      local java_test_bundle =  vim.split(vim.fn.glob("/home/$USER/.local/share/nvim/vscode-java-test/server/*.jar", 1), "\n")
 
       if java_test_bundle[1] ~= '' then
         vim.list_extend(path.bundles, java_test_bundle)

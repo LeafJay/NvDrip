@@ -6,7 +6,6 @@ return {
 
   opts = {
     flavour = "mocha",
-    floating_border = "on",
     integrations = {
       cmp = true,
       gitsigns = true,
@@ -17,6 +16,7 @@ return {
       notify = true,
       lsp_trouble = true,
       which_key = true,
+      barbar = true,
     },
     transparent_background = true,
   },

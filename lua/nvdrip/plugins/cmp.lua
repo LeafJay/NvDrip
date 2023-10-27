@@ -8,6 +8,7 @@ return {
     "saadparwaiz1/cmp_luasnip",     -- for autocompletion
     "rafamadriz/friendly-snippets", -- useful snippets
     "onsails/lspkind.nvim",         -- vs-code like pictograms
+    "Exafunction/codeium.nvim",     -- codeium
   },
   config = function()
     local lsp_zero = require('lsp-zero')
@@ -34,24 +35,26 @@ return {
       },
 
       mapping = cmp.mapping.preset.insert({
-        ['<CR>'] = cmp.mapping.confirm({ select = false }),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }),
         ['<Tab>'] = cmp_action.luasnip_supertab(),
         ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
+        ['<C-Space>'] = cmp.mapping.complete(),
       }),
 
       formatting = {
         format = lspkind.cmp_format({
-          maxwidth = 50,
+          mode = "symbol",
           ellipsis_char = "...",
+          symbol_map = { Codeium = "", }
         }),
       },
 
       sources = {
         { name = "nvim_lsp" },
+        { name = "codeium" },
         { name = "luasnip" },
         { name = "buffer" },
         { name = "path" },
-        { name = "codeium" },
       },
     })
   end,

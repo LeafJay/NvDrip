@@ -92,10 +92,6 @@ return {
         --   name = 'JavaSE-17',
         --   path = vim.fn.expand('~/.sdkman/candidates/java/17.0.6-tem'),
         -- },
-        -- {
-        --   name = 'JavaSE-18',
-        --   path = vim.fn.expand('~/.sdkman/candidates/java/18.0.2-amzn'),
-        -- },
       }
 
       cache_vars.paths = path

@@ -105,10 +105,6 @@ M.barbar = {
 	},
 }
 
-M.codeium = {
-	plugin = true,
-}
-
 M.lspconfig = {
 	plugin = true,
 

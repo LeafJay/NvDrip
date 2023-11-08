@@ -8,7 +8,6 @@ return {
     "saadparwaiz1/cmp_luasnip",     -- for autocompletion
     "rafamadriz/friendly-snippets", -- useful snippets
     "onsails/lspkind.nvim",         -- vs-code like pictograms
-    "Exafunction/codeium.nvim",     -- codeium
   },
   config = function()
     local lsp_zero = require('lsp-zero')
@@ -45,13 +44,11 @@ return {
         format = lspkind.cmp_format({
           mode = "symbol",
           ellipsis_char = "...",
-          symbol_map = { Codeium = "", }
         }),
       },
 
       sources = {
         { name = "nvim_lsp" },
-        { name = "codeium" },
         { name = "luasnip" },
         { name = "buffer" },
         { name = "path" },

@@ -86,7 +86,7 @@ M.telescope = {
 		-- pick a hidden term
 		["<leader>pt"] = { "<cmd> Telescope terms <CR>", "Pick hidden term" },
 
-		["<leader>ma"] = { "<cmd> Telescope marks <CR>", "Telescope bookmarks" },
+		-- ["<leader>ma"] = { "<cmd> Telescope marks <CR>", "Telescope bookmarks" },
 	},
 }
 
@@ -237,6 +237,24 @@ M.dap_jdtls = {
 			"Test java method",
 		},
 	},
+}
+
+M.harpoon = {
+  plugin = true,
+  n = {
+    ["<leader>a"] = {
+      function ()
+        require("harpoon.mark").add_file()
+      end,
+      "Add file to harpoon"
+    },
+    ["<leader>m"] = {
+      function ()
+        require("harpoon.ui").toggle_quick_menu()
+      end,
+      "Add file to harpoon"
+    }
+  }
 }
 
 return M

@@ -16,7 +16,6 @@ M.general = {
 
 	n = {
 		["<Esc>"] = { ":noh <CR>", "Clear highlights" },
-		-- switch between windows
 		["<C-h>"] = { "<cmd> TmuxNavigateLeft<CR>", "Window left" },
 		["<C-l>"] = { "<cmd> TmuxNavigateRight<CR>", "Window Right" },
 		["<C-j>"] = { "<cmd> TmuxNavigateDown<CR>", "Window down" },
@@ -32,10 +31,6 @@ M.general = {
 		["<leader>n"] = { "<cmd> set nu! <CR>", "Toggle line number" },
 		["<leader>rn"] = { "<cmd> set rnu! <CR>", "Toggle relative number" },
 
-		-- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
-		-- http://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
-		-- empty mode is same as using <cmd> :map
-		-- also don't use g[j|k] when in operator pending mode, so it doesn't alter d, y or c behaviour
 		["j"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", opts = { expr = true } },
 		["k"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = { expr = true } },
 		["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = { expr = true } },
@@ -92,16 +87,6 @@ M.telescope = {
 		["<leader>pt"] = { "<cmd> Telescope terms <CR>", "Pick hidden term" },
 
 		["<leader>ma"] = { "<cmd> Telescope marks <CR>", "Telescope bookmarks" },
-	},
-}
-
-M.barbar = {
-	plugin = true,
-	n = {
-		["<leader>q"] = { "<cmd> BufferClose <CR>", "Close buffer" },
-		["<leader>Q"] = { "<cmd> BufferCloseAllButCurrent <CR>", "Close every buffer excepts current" },
-		["<tab>"] = { "<cmd> BufferNext <CR>", "Next buffer" },
-		["<S-tab>"] = { "<cmd> BufferPrevious <CR>", "Previous buffer" },
 	},
 }
 

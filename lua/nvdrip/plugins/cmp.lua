@@ -8,6 +8,7 @@ return {
     "saadparwaiz1/cmp_luasnip",     -- for autocompletion
     "rafamadriz/friendly-snippets", -- useful snippets
     "onsails/lspkind.nvim",         -- vs-code like pictograms
+    "kristijanhusak/vim-dadbod-completion"
   },
   config = function()
     local lsp_zero = require('lsp-zero')
@@ -49,6 +50,7 @@ return {
 
       sources = {
         { name = "nvim_lsp" },
+        { name = "vim-dadbod-completion"},
         { name = "luasnip" },
         { name = "buffer" },
         { name = "path" },

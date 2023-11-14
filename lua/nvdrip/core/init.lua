@@ -1,8 +1,15 @@
 local opt = vim.opt
 local g = vim.g
+local fn = vim.fn
 
+---------------------------------------- ui ----------------------------------------------
 
--------------------------------------- options ------------------------------------------ 
+fn.sign_define("DiagnosticSignError", { text = "", numhl = "DiagnosticSignError", texthl = "DiagnosticSignError" })
+fn.sign_define("DiagnosticSignWarn", { text = "", numhl = "DiagnosticSignWarn", texthl = "DiagnosticSignWarn" })
+fn.sign_define("DiagnosticSignInfo", { text = "", numhl = "DiagnosticSignInfo", texthl = "DiagnosticSignInfo" })
+fn.sign_define("DiagnosticSignHint", { text = "", numhl = "DiagnosticSignHint", texthl = "DiagnosticSignHint" })
+
+-------------------------------------- options ------------------------------------------
 opt.laststatus = 3
 opt.showmode = false
 
@@ -47,7 +54,7 @@ g.mapleader = " "
 
 -- disable some default providers
 for _, provider in ipairs { "node", "perl", "python3", "ruby" } do
-  vim.g["loaded_" .. provider .. "_provider"] = 0
+  g["loaded_" .. provider .. "_provider"] = 0
 end
 -------------------------------------- autocmds ------------------------------------------
 local autocmd = vim.api.nvim_create_autocmd
@@ -57,4 +64,14 @@ autocmd("FileType", {
   callback = function()
     vim.opt_local.buflisted = false
   end,
+})
+
+autocmd("FileType", {
+  pattern = { "c", "cpp", "cs", "java", "sh", "py"},
+  callback = function()
+    vim.bo.shiftwidth = 4
+    vim.bo.tabstop = 4
+    vim.o.expandtab = false
+  end,
+  desc = "Set shiftwidth to 4 in these filetypes",
 })

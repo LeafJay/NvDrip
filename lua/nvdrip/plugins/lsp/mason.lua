@@ -1,20 +1,23 @@
 local ensure_installed = {
-  "tsserver",
-  "tailwindcss",
-  "lua_ls",
-  "jdtls",
-  "rust_analyzer",
-  "svelte",
+	"tsserver",
+	"tailwindcss",
+	"lua_ls",
+	"jdtls",
+	"rust_analyzer",
+	"svelte",
 
-
-  "java-test",
-  "java-debug-adapter",
-  "debugpy"
+	"java-test",
+	"java-debug-adapter",
+	"debugpy",
 }
 
-
 return {
-  'williamboman/mason.nvim',
-  lazy = false,
-  config = true,
+	"williamboman/mason.nvim",
+	lazy = false,
+	opts = {
+		ui = {
+			border = "single",
+			height = 0.8,
+		},
+	},
 }

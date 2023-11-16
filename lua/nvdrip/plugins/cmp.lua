@@ -9,6 +9,7 @@ return {
 		"rafamadriz/friendly-snippets", -- useful snippets
 		"onsails/lspkind.nvim", -- vs-code like pictograms
 		"kristijanhusak/vim-dadbod-completion",
+		"saecki/crates.nvim",
 	},
 	config = function()
 		local lsp_zero = require("lsp-zero")
@@ -51,9 +52,10 @@ return {
 			sources = {
 				{ name = "nvim_lsp" },
 				{ name = "vim-dadbod-completion" },
+				{ name = "crates" },
+				{ name = "path" },
 				{ name = "luasnip" },
 				{ name = "buffer" },
-				{ name = "path" },
 			},
 		})
 	end,

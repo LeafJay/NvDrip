@@ -1,10 +1,6 @@
-
 return {
   {
     "mfussenegger/nvim-dap",
-    dependencies = {
-      { 'williamboman/mason.nvim' },
-    },
     config = function(_, opts)
       require("nvdrip.core.utils").load_mappings("dap")
     end,
@@ -18,8 +14,8 @@ return {
       require("nvdrip.core.utils").load_mappings("dapui")
     end,
     config = function()
-      local dap = require "dap"
-      local dapui = require "dapui"
+      local dap = require("dap")
+      local dapui = require("dapui")
       dapui.setup()
       dap.listeners.after.event_initialized["dapui_config"] = function()
         dapui.open()

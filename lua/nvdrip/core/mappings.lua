@@ -148,7 +148,7 @@ M.dapui = {
   n = {
     ["<leader>du"] = {
       function()
-        require("dapui").toggle()
+        require("dapui").toggle("sidebar")
       end,
       "Toggle dap UI",
     },
@@ -250,19 +250,7 @@ M.harpoon = {
       function()
         require("harpoon.ui").toggle_quick_menu()
       end,
-      "Add file to harpoon"
-    }
-  }
-}
-
-M.rust_tools = {
-  plugin = true,
-  n = {
-    ["<leader>ca"] = {
-      function()
-        require("rust-tools").hover_actions().hover_actions()
-      end,
-      "Rust hover actions",
+      "Open harpoon menu"
     }
   }
 }

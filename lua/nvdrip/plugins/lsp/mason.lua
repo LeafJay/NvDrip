@@ -8,15 +8,17 @@ local ensure_installed = {
   "svelte-language-server",
 
   --formatters
-
+  "stylua",
+  --rustfmt --installed via rustup
 
   --linters
-
+  "luacheck",
 
   --daps
-  --java-test --waiting for >=0.40
   "java-debug-adapter",
   "debugpy",
+  "codelldb",
+  --java-test --waiting for >=0.40
 }
 
 return {
@@ -27,8 +29,8 @@ return {
       border = "single",
       height = 0.8,
       icons = {
-        package_pending = "",
         package_installed = "●",
+        package_pending = "",
         package_uninstalled = "○",
       },
 

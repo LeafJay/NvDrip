@@ -34,7 +34,7 @@ opt.relativenumber = true
 opt.numberwidth = 1
 
 -- disable nvim intro
-opt.shortmess:append "sI"
+opt.shortmess:append("sI")
 
 opt.signcolumn = "yes"
 opt.splitbelow = true
@@ -48,12 +48,12 @@ opt.updatetime = 250
 
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
-opt.whichwrap:append "<>[]hl"
+opt.whichwrap:append("<>[]hl")
 
 g.mapleader = " "
 
 -- disable some default providers
-for _, provider in ipairs { "node", "perl", "python3", "ruby" } do
+for _, provider in ipairs({ "node", "perl", "python3", "ruby" }) do
   g["loaded_" .. provider .. "_provider"] = 0
 end
 -------------------------------------- autocmds ------------------------------------------
@@ -67,7 +67,7 @@ autocmd("FileType", {
 })
 
 autocmd("FileType", {
-  pattern = { "c", "cpp", "cs", "java", "sh", "py"},
+  pattern = { "c", "cpp", "cs", "java", "sh", "py" },
   callback = function()
     vim.bo.shiftwidth = 4
     vim.bo.tabstop = 4
@@ -75,3 +75,21 @@ autocmd("FileType", {
   end,
   desc = "Set shiftwidth to 4 in these filetypes",
 })
+
+-------------------------------------- keymaps ------------------------------------------
+vim.keymap.set({ "n", "v" }, "j", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { expr = true })
+vim.keymap.set({ "n", "v" }, "k", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { expr = true })
+
+vim.keymap.set("n", "<leader>fm", "<cmd>lua vim.lsp.buf.format({ async = true})<CR>", { silent = true })
+
+vim.keymap.set("v", "<", "<gv", { silent = true })
+vim.keymap.set("v", ">", ">gv", { silent = true })
+
+vim.keymap.set("x", "p", 'p:let @+=@0<CR>:let @"=@0<CR>', { silent = true })
+
+vim.keymap.set("n", "<C-h>", "<cmd> TmuxNavigateLeft<CR>", { silent = true })
+vim.keymap.set("n", "<C-l>", "<cmd> TmuxNavigateRight<CR>", { silent = true })
+vim.keymap.set("n", "<C-j>", "<cmd> TmuxNavigateDown<CR>", { silent = true })
+vim.keymap.set("n", "<C-k>", "<cmd> TmuxNavigateUp<CR>", { silent = true })
+
+vim.keymap.set("n", "<Esc>", ":noh <CR>", { silent = true })

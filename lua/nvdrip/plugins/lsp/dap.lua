@@ -1,53 +1,54 @@
 return {
-	{
-		"mfussenegger/nvim-dap",
-		config = function(_, opts)
-			require("nvdrip.core.utils").load_mappings("dap")
-		end,
-	},
+  {
+    "mfussenegger/nvim-dap",
+    init = function()
+      vim.keymap.set(
+        "n",
+        "<leader>dc",
+        '<cmd>lua require("dap").continue()<CR>',
+        { noremap = true, silent = true }
+      )
+    end,
+  },
 
-	{
-		"rcarriga/nvim-dap-ui",
-		event = "VeryLazy",
-		dependencies = "mfussenegger/nvim-dap",
-		init = function()
-			require("nvdrip.core.utils").load_mappings("dapui")
-		end,
-		-- config = function()
-		--   local dap = require("dap")
-		--   local dapui = require("dapui")
-		--   dapui.setup()
-		--   dap.listeners.after.event_initialized["dapui_config"] = function()
-		--     dapui.open("sidebar")
-		--   end
-		--   dap.listeners.before.event_terminated["dapui_config"] = function()
-		--     dapui.close("sidebar")
-		--   end
-		--   dap.listeners.before.event_exited["dapui_config"] = function()
-		--     dapui.close("sidebar")
-		--   end
-		-- end,
-	},
+  {
+    "rcarriga/nvim-dap-ui",
+    event = "VeryLazy",
+    dependencies = "mfussenegger/nvim-dap",
+    init = function()
+      vim.keymap.set("n", "<leader>du", '<cmd>lua require("dapui").toggle("sidebar")<CR>')
+    end,
+    config = function()
+      local dap = require("dap")
+      local dapui = require("dapui")
+      dapui.setup()
+      dap.listeners.after.event_initialized["dapui_config"] = function()
+        dapui.open("sidebar")
+      end
+    end,
+  },
 
-	{
-		"theHamsta/nvim-dap-virtual-text",
-		lazy = false,
-		config = function(_, opts)
-			require("nvim-dap-virtual-text").setup()
-		end,
-	},
+  {
+    "theHamsta/nvim-dap-virtual-text",
+    lazy = false,
+    config = function(_, opts)
+      require("nvim-dap-virtual-text").setup()
+    end,
+  },
 
-	{
-		"mfussenegger/nvim-dap-python",
-		ft = "python",
-		dependencies = {
-			"mfussenegger/nvim-dap",
-			"rcarriga/nvim-dap-ui",
-		},
-		config = function(_, opts)
-			local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
-			require("dap-python").setup(path)
-			require("nvdrip.core.utils").load_mappings("dap_python")
-		end,
-	},
+  {
+    "mfussenegger/nvim-dap-python",
+    ft = "python",
+    dependencies = {
+      "mfussenegger/nvim-dap",
+      "rcarriga/nvim-dap-ui",
+    },
+    init = function()
+      vim.keymap.set("n", "<leader>dtm", '<cmd>lua require("dap-python").test_method()<CR>')
+    end,
+    config = function(_, opts)
+      local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
+      require("dap-python").setup(path)
+    end,
+  },
 }

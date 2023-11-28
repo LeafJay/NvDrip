@@ -7,10 +7,15 @@ return {
     },
   },
   init = function()
-    require("nvdrip.core.utils").load_mappings("fterm")
+    vim.keymap.set(
+      { "n", "t" },
+      "<M-i>",
+      '<cmd>lua require("FTerm").toggle()<CR>',
+      { noremap = true, silent = true }
+    )
   end,
-  
-  config = function(_,opts)
-    require('FTerm').setup(opts)
-  end
+
+  config = function(_, opts)
+    require("FTerm").setup(opts)
+  end,
 }

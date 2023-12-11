@@ -109,7 +109,11 @@ return {
 
     local function enable_debugger(bufnr)
       require("jdtls").setup_dap({ hotcodereplace = "auto" })
-      require("jdtls.dap").setup_dap_main_class_configs()
+      require("jdtls.dap").setup_dap_main_class_configs({
+        config_overrides = {
+            
+        }
+      })
 
       local opts = { buffer = bufnr }
       vim.keymap.set("n", "<leader>dtc", '<cmd>lua require("jdtls").test_class()<CR>', opts)
@@ -188,11 +192,11 @@ return {
 
       local lsp_settings = {
         java = {
-          -- jdt = {
-          --   ls = {
-          --     vmargs = "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx1G -Xms100m"
-          --   }
-          -- },
+          jdt = {
+            ls = {
+              vmargs = "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx1G -Xms100m"
+            }
+          },
           eclipse = {
             downloadSources = true,
           },

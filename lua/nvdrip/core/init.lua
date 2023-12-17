@@ -54,26 +54,26 @@ g.mapleader = " "
 
 -- disable some default providers
 for _, provider in ipairs({ "node", "perl", "python3", "ruby" }) do
-  g["loaded_" .. provider .. "_provider"] = 0
+    g["loaded_" .. provider .. "_provider"] = 0
 end
 -------------------------------------- autocmds ------------------------------------------
 local autocmd = vim.api.nvim_create_autocmd
 
 autocmd("FileType", {
-  pattern = "qf",
-  callback = function()
-    vim.opt_local.buflisted = false
-  end,
+    pattern = "qf",
+    callback = function()
+        vim.opt_local.buflisted = false
+    end,
 })
 
 autocmd("FileType", {
-  pattern = { "c", "cpp", "cs", "java", "sh", "py" },
-  callback = function()
-    vim.bo.shiftwidth = 4
-    vim.bo.tabstop = 4
-    vim.o.expandtab = false
-  end,
-  desc = "Set shiftwidth to 4 in these filetypes",
+    pattern = { "c", "cpp", "cs", "java", "sh", "py" },
+    callback = function()
+        vim.bo.shiftwidth = 4
+        vim.bo.tabstop = 4
+        vim.o.expandtab = false
+    end,
+    desc = "Set shiftwidth to 4 in these filetypes",
 })
 
 -------------------------------------- keymaps ------------------------------------------

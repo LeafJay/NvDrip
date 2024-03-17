@@ -8,6 +8,8 @@ fn.sign_define("DiagnosticSignInfo", { text = "", numhl = "DiagnosticSignInfo
 fn.sign_define("DiagnosticSignHint", { text = "", numhl = "DiagnosticSignHint", texthl = "DiagnosticSignHint" })
 
 -------------------------------------- options ------------------------------------------
+
+g.loaded_netrwPlugin = 1
 opt.laststatus = 3
 opt.showmode = false
 

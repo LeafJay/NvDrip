@@ -23,7 +23,7 @@ return {
         version = "^4", -- Recommended
         ft = { "rust" },
         init = function()
-            -- vim.g.inlay_hints_visible = true
+            vim.g.inlay_hints_visible = true
             vim.g.rustaceanvim = {
                 tools = {},
                 server = {

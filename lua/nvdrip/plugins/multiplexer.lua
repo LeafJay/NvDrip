@@ -9,6 +9,10 @@
 return {
     "aserowy/tmux.nvim",
     config = function()
-        require("tmux").setup()
+        require("tmux").setup({
+            copy_sync = {
+                enable = false,
+            },
+        })
     end
 }

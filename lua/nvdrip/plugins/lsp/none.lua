@@ -8,7 +8,9 @@ return {
 			sources = {
                 null_ls.builtins.formatting.djlint,
                 null_ls.builtins.diagnostics.djlint,
+
 				null_ls.builtins.formatting.stylua,
+
 				null_ls.builtins.formatting.black,
 				null_ls.builtins.diagnostics.mypy.with({
 					extra_args = function()

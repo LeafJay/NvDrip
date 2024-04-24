@@ -34,7 +34,7 @@ return {
                 end
 
                 if client.server_capabilities.inlayHintProvider then
-                     vim.lsp.inlay_hint.enable(event.buf, true)
+                    vim.lsp.inlay_hint.enable(event.buf, true)
                 end
             end,
         })
@@ -43,7 +43,18 @@ return {
 
         lspconfig.lua_ls.setup({})
 
+        lspconfig.texlab.setup({
+            capabilities = capabilities,
+            settings = {
+                latexFormatter = "latexindent",
+            }
+        })
+
         lspconfig.cssls.setup({
+            capabilities = capabilities
+        })
+
+        lspconfig.svelte.setup({
             capabilities = capabilities
         })
 
@@ -54,5 +65,13 @@ return {
         lspconfig.pyright.setup({
             capabilities = capabilities,
         })
+
+        lspconfig.tailwindcss.setup({
+            capabilities = capabilities,
+        })
+
+        lspconfig.htmx.setup {
+            capabilities = capabilities,
+        }
     end
 }

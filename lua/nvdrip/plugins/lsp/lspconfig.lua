@@ -32,10 +32,10 @@ return {
                 if client.server_capabilities.documentSymbolProvider then
                     require("nvim-navic").attach(client, event.buf)
                 end
-
-                if client.server_capabilities.inlayHintProvider then
-                    vim.lsp.inlay_hint.enable(event.buf, true)
-                end
+                --
+                -- if client.server_capabilities.inlayHintProvider then
+                --     vim.lsp.inlay_hint.enable(event.buf, true)
+                -- end
             end,
         })
 

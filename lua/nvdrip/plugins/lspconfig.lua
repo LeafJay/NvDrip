@@ -8,7 +8,6 @@ return {
 
 	config = function()
 		require("neodev").setup({})
-		require("java").setup()
 
 		local lspconfig = require("lspconfig")
 		vim.api.nvim_create_autocmd("LspAttach", {
@@ -63,21 +62,21 @@ return {
 			capabilities = capabilities,
 		})
 
-		lspconfig.jdtls.setup({
-			capabilities = capabilities,
-			settings = {
-				java = {
-					configuration = {
-						runtimes = {
-							{
-								name = "JavaSE-21",
-								path = "/usr/lib/jvm/java-21-openjdk/",
-								default = true,
-							},
-						},
-					},
-				},
-			},
-		})
+		-- lspconfig.jdtls.setup({
+		-- 	capabilities = capabilities,
+		-- 	settings = {
+		-- 		java = {
+		-- 			configuration = {
+		-- 				runtimes = {
+		-- 					{
+		-- 						name = "JavaSE-21",
+		-- 						path = "/usr/lib/jvm/java-21-openjdk/",
+		-- 						default = true,
+		-- 					},
+		-- 				},
+		-- 			},
+		-- 		},
+		-- 	},
+		-- })
 	end,
 }

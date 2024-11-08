@@ -58,6 +58,10 @@ return {
 			capabilities = capabilities,
 		})
 
+        lspconfig.yamlls.setup({
+			capabilities = capabilities,
+        })
+
 		lspconfig.texlab.setup({
 			capabilities = capabilities,
 		})

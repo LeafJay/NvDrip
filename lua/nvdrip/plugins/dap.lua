@@ -1,5 +1,11 @@
 return {
-    'mfussenegger/nvim-dap',
+    {
+        'mfussenegger/nvim-dap',
+        keys = {
+            { "<leader>dc", '<cmd>DapContinue<CR>', desc = "Dap continue" },
+            { "<leader>db", '<cmd>DapToggleBreakpoint<CR>', desc = "Toggle breakpoint" },
+        }
+    },
     'theHamsta/nvim-dap-virtual-text',
     {
         "mfussenegger/nvim-dap-python",

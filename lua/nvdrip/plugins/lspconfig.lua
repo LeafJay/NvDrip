@@ -66,6 +66,13 @@ return {
 			capabilities = capabilities,
 		})
 
+        lspconfig.bashls.setup({
+			capabilities = capabilities,
+        })
+
+        lspconfig.terraformls.setup({
+			capabilities = capabilities,
+        })
 		-- lspconfig.jdtls.setup({
 		-- 	capabilities = capabilities,
 		-- 	settings = {

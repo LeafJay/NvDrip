@@ -33,7 +33,7 @@ return {
 					require("nvim-navic").attach(client, event.buf)
 				end
 
-                vim.lsp.inlay_hint.enable(true)
+				vim.lsp.inlay_hint.enable(true)
 			end,
 		})
 
@@ -58,21 +58,26 @@ return {
 			capabilities = capabilities,
 		})
 
-        lspconfig.yamlls.setup({
+		lspconfig.yamlls.setup({
 			capabilities = capabilities,
-        })
+		})
 
 		lspconfig.texlab.setup({
 			capabilities = capabilities,
 		})
 
-        lspconfig.bashls.setup({
+		lspconfig.bashls.setup({
 			capabilities = capabilities,
-        })
+		})
 
-        lspconfig.terraformls.setup({
+		lspconfig.terraformls.setup({
 			capabilities = capabilities,
-        })
+		})
+
+		lspconfig.wgsl_analyzer.setup({
+			capabilities = capabilities,
+		})
+
 		-- lspconfig.jdtls.setup({
 		-- 	capabilities = capabilities,
 		-- 	settings = {

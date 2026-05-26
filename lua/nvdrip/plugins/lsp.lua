@@ -50,12 +50,14 @@ return {
         vim.lsp.enable({
             "lua_ls",
             "basedpyright",
+            "pyrefly",
             "glsl_analyzer",
             "svelte",
             "ts_ls",
             "jsonls",
             "tailwindcss",
             "clangd",
+            "neocmake",
         })
 
         vim.diagnostic.config({ virtual_text = false, virtual_lines = { current_line = true } })

@@ -4,9 +4,16 @@ return {
         { match = "nvim-treesitter", cmd = "TSUpdate" },
     },
     setup = function()
-        -- New nvim-treesitter API: setup only configures install_dir
         require("nvim-treesitter").setup({})
-        -- Highlight and indent via Neovim's native treesitter
+        pcall(function()
+            require("nvim-treesitter").install({
+                "lua", "python", "rust", "glsl", "svelte",
+                "typescript", "javascript", "tsx", "json",
+                "css", "html", "c", "cpp",
+                "cmake", "make", "ninja",
+                "vim", "vimdoc", "markdown", "markdown_inline", "bash",
+            })
+        end)
         vim.api.nvim_create_autocmd("FileType", {
             callback = function()
                 pcall(vim.treesitter.start)

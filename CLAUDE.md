@@ -47,9 +47,13 @@ LSP servers are enabled explicitly in `plugins/lsp.lua` via `vim.lsp.enable({...
 | catppuccin | `catppuccin.lua` | Colorscheme (mocha flavor); must be first in plugin_modules |
 | barbecue + navic | `topbar.lua` / `navic.lua` | Breadcrumb bar; navic+navbuddy attached manually in LspAttach |
 | navbuddy | `navic.lua` / `lsp.lua` | Symbol navigator (`<leader>fs`); specs in navic.lua, attach in lsp.lua |
+| indent-blankline | `indent.lua` | Indent guides; current block (treesitter scope) highlighted |
 | which-key | `whichkey.lua` | Keymap discovery |
 | lualine | `line.lua` | Status line; also registers nvim-web-devicons spec (shared dep) |
 | strudel.nvim | `strudel.lua` | Requires `npm install` at build time via PackChanged hook |
+| cppman.nvim + clangd_extensions + cmake-tools | `cpp.lua` | C++ docs (`K` twice = cppman), clangd extras, CMake build/run; needs `cppman` CLI installed |
+| nvim-dap + dap-ui | `dap.lua` | Debugger via `gdb --interpreter=dap` (C/C++) |
+| telescope-ui-select | `telescope.lua` | `vim.ui.select` (code actions) through Telescope |
 
 ## Keymaps reference
 
@@ -65,3 +69,8 @@ Defined in `core.lua` and plugin `setup` functions:
 - `<leader>rn` / `<leader>ca` — LSP rename / code action
 - `gd/gD/gr/gi/K/<C-k>` — LSP navigation (set in LspAttach)
 - `[d` / `]d` — previous/next diagnostic
+- C++ (clangd buffers): `K` hover, `K` again opens cppman; `<leader>cc` cppman search, `<leader>cm` cppman word, `<leader>ch` header/source, `<leader>ci/ct/cA/cM` symbol info / type hierarchy / AST / memory
+- CMake: `<leader>mg/mb/mr/mt/mT/md` generate / build / run / target / build type / debug
+- Debug: `<leader>bb/bB/bu/br/bt`, `<F5>` continue, `<F10>/<F11>/<F12>` step over/into/out
+
+Custom snippets live in `snippets/` (VSCode format, registered in `snippets/package.json`), picked up by blink.cmp's default search path.

@@ -3,6 +3,7 @@ return {
         { src = "https://github.com/nvim-telescope/telescope.nvim", name = "telescope", version = "v0.2.2" },
         { src = "https://github.com/nvim-lua/plenary.nvim", name = "plenary" },
         { src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim", name = "telescope-fzf-native" },
+        { src = "https://github.com/nvim-telescope/telescope-ui-select.nvim", name = "telescope-ui-select" },
     },
     hooks = {
         {
@@ -27,8 +28,14 @@ return {
         },
     },
     setup = function()
-        require("telescope").setup({})
+        require("telescope").setup({
+            extensions = {
+                ["ui-select"] = { require("telescope.themes").get_cursor() },
+            },
+        })
         pcall(function() require("telescope").load_extension("fzf") end)
+        -- vim.ui.select (code actions etc.) through a fuzzy picker
+        pcall(function() require("telescope").load_extension("ui-select") end)
         vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Find Files" })
         vim.keymap.set("n", "<leader>fa", "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<cr>", { desc = "Find Hidden Files" })
         vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Find Buffers" })

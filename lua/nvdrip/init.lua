@@ -17,6 +17,8 @@ local plugin_modules = {
     "nvdrip.plugins.format",
     "nvdrip.plugins.gitconflict",
     "nvdrip.plugins.lsp",
+    "nvdrip.plugins.cpp",
+    "nvdrip.plugins.dap",
     "nvdrip.plugins.mason",
     "nvdrip.plugins.minisurround",
     "nvdrip.plugins.oil",
@@ -26,6 +28,7 @@ local plugin_modules = {
     "nvdrip.plugins.tmux",
     "nvdrip.plugins.topbar",
     "nvdrip.plugins.treesitter",
+    "nvdrip.plugins.indent",
     "nvdrip.plugins.whichkey",
 }
 

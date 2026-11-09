@@ -22,9 +22,14 @@ return {
                 vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, { desc = "Show signature help" })
                 vim.keymap.set("n", "<leader>fs", require("nvim-navbuddy").open, { desc = "View symbols" })
                 vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename symbol" })
-                vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Trigger code action" })
-                vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
-                vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
+                vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "Trigger code action" })
+                vim.keymap.set("n", "[d", function()
+                    vim.diagnostic.jump({ count = -1, float = true })
+                end, { desc = "Go to previous diagnostic" })
+                vim.keymap.set("n", "]d", function()
+                    vim.diagnostic.jump({ count = 1, float = true })
+                end, { desc = "Go to next diagnostic" })
+                vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { desc = "Show line diagnostics" })
             end,
         })
 
@@ -34,6 +39,23 @@ return {
                     schemas = require("schemastore").json.schemas(),
                     validate = { enable = true },
                 },
+            },
+        })
+
+        vim.lsp.config("clangd", {
+            cmd = {
+                "clangd",
+                "--background-index",
+                "--clang-tidy",
+                "--header-insertion=iwyu",
+                "--completion-style=detailed",
+                "--function-arg-placeholders=true",
+                "--fallback-style=LLVM",
+            },
+            init_options = {
+                usePlaceholders = true,
+                completeUnimported = true,
+                clangdFileStatus = true,
             },
         })
 
@@ -60,7 +82,11 @@ return {
             "neocmake",
         })
 
-        vim.diagnostic.config({ virtual_text = false, virtual_lines = { current_line = true } })
+        vim.diagnostic.config({
+            virtual_text = false,
+            virtual_lines = { current_line = true },
+            float = { border = "single", source = true, max_width = 100 },
+        })
         vim.lsp.inlay_hint.enable(true)
     end,
 }

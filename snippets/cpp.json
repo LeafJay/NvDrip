@@ -1,0 +1,111 @@
+{
+  "main": {
+    "prefix": "main",
+    "description": "main with argc/argv",
+    "body": ["int main(int argc, char* argv[]) {", "  $0", "  return 0;", "}"]
+  },
+  "class": {
+    "prefix": "cls",
+    "description": "class with rule-of-five defaults",
+    "body": [
+      "class ${1:Name} {",
+      "public:",
+      "  ${1}();",
+      "  ~${1}();",
+      "",
+      "  ${1}(const ${1}&) = default;",
+      "  ${1}& operator=(const ${1}&) = default;",
+      "  ${1}(${1}&&) noexcept = default;",
+      "  ${1}& operator=(${1}&&) noexcept = default;",
+      "",
+      "private:",
+      "  $0",
+      "};"
+    ]
+  },
+  "struct": {
+    "prefix": "struct",
+    "description": "struct with defaulted three-way comparison",
+    "body": [
+      "struct ${1:Name} {",
+      "  $0",
+      "",
+      "  auto operator<=>(const ${1}&) const = default;",
+      "};"
+    ]
+  },
+  "pragma once": {
+    "prefix": "once",
+    "body": ["#pragma once", "", "$0"]
+  },
+  "namespace": {
+    "prefix": "ns",
+    "body": ["namespace ${1:name} {", "", "$0", "", "} // namespace ${1}"]
+  },
+  "range for": {
+    "prefix": "forr",
+    "body": ["for (const auto& ${1:item} : ${2:container}) {", "  $0", "}"]
+  },
+  "index for": {
+    "prefix": "fori",
+    "body": ["for (std::size_t ${1:i} = 0; ${1} < ${2:n}; ++${1}) {", "  $0", "}"]
+  },
+  "unique_ptr": {
+    "prefix": "uptr",
+    "body": ["auto ${1:ptr} = std::make_unique<${2:T}>($3);$0"]
+  },
+  "shared_ptr": {
+    "prefix": "sptr",
+    "body": ["auto ${1:ptr} = std::make_shared<${2:T}>($3);$0"]
+  },
+  "lambda": {
+    "prefix": "lam",
+    "body": ["auto ${1:fn} = [${2:&}](${3}) {", "  $0", "};"]
+  },
+  "std::visit overloaded": {
+    "prefix": "visit",
+    "description": "std::visit with overloaded lambdas",
+    "body": [
+      "template <class... Ts> struct overloaded : Ts... { using Ts::operator()...; };",
+      "",
+      "std::visit(overloaded{",
+      "  [](${1:int} v) { $2 },",
+      "  [](auto&& v) { $3 },",
+      "}, ${4:variant});$0"
+    ]
+  },
+  "scope timer": {
+    "prefix": "timer",
+    "description": "measure elapsed time with steady_clock",
+    "body": [
+      "auto ${1:t0} = std::chrono::steady_clock::now();",
+      "$0",
+      "auto ${1}_ms = std::chrono::duration_cast<std::chrono::milliseconds>(",
+      "  std::chrono::steady_clock::now() - ${1}).count();",
+      "std::cerr << \"${2:elapsed}: \" << ${1}_ms << \" ms\\n\";"
+    ]
+  },
+  "debug print": {
+    "prefix": "dbg",
+    "body": ["std::cerr << \"${1:x} = \" << ${1} << '\\n';$0"]
+  },
+  "competitive template": {
+    "prefix": "cp",
+    "body": [
+      "#include <bits/stdc++.h>",
+      "using namespace std;",
+      "using ll = long long;",
+      "",
+      "int main() {",
+      "  ios::sync_with_stdio(false);",
+      "  cin.tie(nullptr);",
+      "  $0",
+      "  return 0;",
+      "}"
+    ]
+  },
+  "gtest": {
+    "prefix": "gtest",
+    "body": ["TEST(${1:Suite}, ${2:Name}) {", "  $0", "}"]
+  }
+}

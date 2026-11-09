@@ -1,0 +1,9 @@
+{
+  "name": "nvdrip-snippets",
+  "contributes": {
+    "snippets": [
+      { "language": ["cpp"], "path": "./cpp.json" },
+      { "language": ["cmake"], "path": "./cmake.json" }
+    ]
+  }
+}

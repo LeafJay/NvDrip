@@ -17,7 +17,8 @@ return {
             },
             formatters = {
                 ["clang-format"] = {
-                    prepend_args = { "--style={IndentWidth: 2}" },
+                    -- project .clang-format wins; this only applies when none exists
+                    prepend_args = { "--fallback-style=LLVM" },
                 },
             },
         })
